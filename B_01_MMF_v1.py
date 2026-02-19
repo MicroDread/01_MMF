@@ -31,6 +31,7 @@ def string_checker(questions, valid_answers=('yes', 'no'),
 
         print(f"please choose an option from {valid_answers}")
 
+
 def instructions():
     make_statement( "instructions", "")
 
@@ -55,7 +56,44 @@ exit code ('xxx'), the program will display the ticket
 """)
 
 
+def not_blank(question):
+    """Checks that a user response is not blank"""
+
+    while True:
+        response = input(question)
+
+        if response != "":
+            return response
+
+        print("Sorry, this cant be blank.  Please try again.\n")
+
+
+def int_check(question):
+    """Checks users enter an integer"""
+
+    error = "Oops - please enter an integer."
+
+    while True:
+
+        try:
+            # return response if it's an integer
+            response = int(input(question))
+
+            return response
+
+        except ValueError:
+            print(error)
+
+
+
 # Main routine goes here
+
+# Initialise ticket number
+MAX_TICKETS = 5
+tickets_sold = 0
+
+# initialise variables / non-default options for string checker
+payment_ans = ('cash', 'credit')
 
 make_statement( "Mini-Movie Fundraiser Program", "🍿")
 
@@ -66,4 +104,36 @@ if want_instructions == "yes":
     instructions()
 
 print()
-print("program continues...")
+
+while tickets_sold < MAX_TICKETS:
+    # ask user for their name (and check it's not blank
+    print()
+    name = not_blank("Name: ")
+
+    # if name is exit code, break out of loop
+    if name == "xxx":
+        break
+
+        # ask for their age and check it's between 12 and 120
+    age = int_check("Age: ")
+
+    # output error message / success message
+    if age < 12:
+        print(f"{name} is too young")
+        continue
+    elif age > 120:
+        print(f"{name} is too old")
+        continue
+    else:
+        pass
+
+    # ask user for payment method (cash / credit / ca / cr)
+    pay_method = string_checker("Payment method: ", payment_ans, 2)
+    print(f"{name} has bought a ticket ({pay_method})")
+
+    tickets_sold += 1
+
+if tickets_sold == MAX_TICKETS:
+    print(f"You have sold all the tickets (ie: {MAX_TICKETS} tickets")
+else:
+    print(f"You have sold {tickets_sold} / {MAX_TICKETS} tickets. ")
