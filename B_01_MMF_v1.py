@@ -89,7 +89,7 @@ def int_check(question):
 # Main routine goes here
 
 # Initialise ticket number
-MAX_TICKETS = 5
+MAX_TICKETS = 7
 tickets_sold = 0
 
 # initialise variables / non-default options for string checker
