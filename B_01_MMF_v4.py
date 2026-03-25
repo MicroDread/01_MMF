@@ -70,7 +70,7 @@ def not_blank(question):
 def int_check(question):
     """Checks users enter an integer"""
 
-    error = "Oops - please enter an intger."
+    error = "Oops - please enter an integer."
 
     while True:
 
@@ -95,7 +95,7 @@ def currency(x):
 MAX_TICKETS = 5
 tickets_sold = 0
 
-# intialise variables / non-default options for string checker
+# initialise variables / non-default options for string checker
 payment_ans = ('cash', 'credit')
 
 # Ticket Price List
@@ -263,7 +263,7 @@ for item in to_write:
     print(item)
 
 # create file to hold data (add .txt extension)
-file_name = "write_experiment"
+file_name = "MMF_Data"
 write_to = "{}.txt".format(file_name)
 
 text_file = open(write_to, "w+")
